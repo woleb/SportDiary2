@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Sport Diary</string>
+    <string name="textview">Sport Diary</string>
+    <string name="button">Save</string>
+    <string name="name">Sport</string>
+    <string name="date">Date</string>
+    <string name="sport">Sport</string>
+    <string name="feeling_1_10">Feeling: 1-10</string>
+    <string name="notes">Notes</string>
+    <string name="text">resulttv</string>
+    <string name="read">Read</string>
+</resources>
