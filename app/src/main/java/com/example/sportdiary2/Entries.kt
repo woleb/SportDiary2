@@ -14,10 +14,11 @@ class Entries {
                 this.feeling = feeling
                 this.notes = notes
         }
+        /*
         constructor(userName: String) {
                 this.date = date
                 this.sport = sport
                 this.feeling = feeling
                 this.notes = notes
-        }
+        }*/
 }
