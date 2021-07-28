@@ -2,6 +2,7 @@ package com.example.sportdiary2
 
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.view.Menu
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
@@ -21,6 +22,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         val context = this
         val db = DataBaseHandler(context)
 
@@ -126,6 +128,12 @@ class MainActivity : AppCompatActivity() {
         val myFormat = "dd/MM/yyyy" // mention the format you need
         val sdf = SimpleDateFormat(myFormat, Locale.GERMAN)
         editTextDate!!.text = sdf.format(cal.getTime())
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.main_menu, menu)
+        return true
     }
 
 }

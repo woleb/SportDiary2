@@ -9,4 +9,6 @@
     <string name="notes">Notes</string>
     <string name="text">resulttv</string>
     <string name="read">Read</string>
+    <string name="export_csv">Export CSV</string>
+    <string name="import_csv">Import CSV</string>
 </resources>
