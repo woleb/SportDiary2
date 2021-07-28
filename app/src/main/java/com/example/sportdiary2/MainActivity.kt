@@ -2,7 +2,9 @@ package com.example.sportdiary2
 
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
@@ -134,6 +136,22 @@ class MainActivity : AppCompatActivity() {
         val inflater = menuInflater
         inflater.inflate(R.menu.main_menu, menu)
         return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.export_csv -> {
+                Log.d("export_csv", "done")
+                return true
+            }
+            R.id.import_csv -> {
+                Log.d("import_csv", "done")
+                return true
+            }
+
+            else -> return super.onOptionsItemSelected(item)
+        }
+
     }
 
 }
