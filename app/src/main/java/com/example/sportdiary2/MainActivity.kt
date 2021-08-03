@@ -3,6 +3,7 @@ package com.example.sportdiary2
 import android.app.DatePickerDialog
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -64,13 +65,42 @@ class MainActivity : AppCompatActivity() {
 
         })
 
+        /*
+         Sport Spinner
+         Find View by id for editTextSport
+         */
+        val spinner_sport=findViewById<Spinner>(R.id.editTextSport) as Spinner
+        //Create An Array which Contain race_minute name
+        val sport = arrayOf("Swimming","Cycling","Running","Strength","Yoga","Stretching")
+            //(0..59).toList().toTypedArray()
+        //val race_minute = arrayOf("0","1")
+
+        //Set Array in Adapter for duration
+        val adapter_sport=ArrayAdapter(this@MainActivity,android.R.layout.simple_spinner_dropdown_item,sport)
+        spinner_sport.adapter=adapter_sport
+
+        spinner_sport.onItemSelectedListener=object :AdapterView.OnItemSelectedListener{
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+                //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                val customPositionToast =
+                    Toast.makeText(applicationContext, "Toast message at the top", Toast.LENGTH_SHORT)
+                customPositionToast.setGravity(Gravity.BOTTOM, 0, 0)
+                customPositionToast.show()
+                //TODO("Is it really needed here?")
+            }
+
+        }
+
 
         // get all Fields
         val button: Button = this.findViewById(R.id.button)
         button.setOnClickListener {
 
             //var editTextDate: TextView = findViewById(R.id.editTextDate)
-            var editTextSport: EditText = findViewById(R.id.editTextSport)
+            var editTextSport: Spinner = findViewById(R.id.editTextSport)
             var editTextFeeling: EditText = findViewById(R.id.editTextFeeling)
             var editTextNotes: EditText = findViewById(R.id.editTextNotes)
 
@@ -79,20 +109,20 @@ class MainActivity : AppCompatActivity() {
 
             // Checking if all fields are filled
             if (editTextDate.text.toString().isNotEmpty() &&
-                editTextSport.text.toString().isNotEmpty() &&
+                editTextSport.toString().isNotEmpty() &&
                 editTextFeeling.text.toString().isNotEmpty() &&
                 editTextNotes.text.toString().isNotEmpty()
             ) {
                 //putting all fields in a list
                 val entries = Entries(
-                    editTextDate.text.toString(), editTextSport.text.toString(),
+                    editTextDate.text.toString(), editTextSport.toString(),
                     editTextFeeling.text.toString(), editTextNotes.text.toString()
                 )
                 //insert the list into the database
                 db.insertData(entries)
                 //clear all fields
                 //editTextDate.text.clear()
-                editTextSport.text.clear()
+                //editTextSport.text.clear()
                 editTextFeeling.text.clear()
                 editTextNotes.text.clear()
 
