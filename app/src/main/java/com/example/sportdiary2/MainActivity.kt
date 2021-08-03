@@ -125,22 +125,30 @@ class MainActivity : AppCompatActivity() {
             cursor.close()
         }
     }
-
+    //update the Date Field
     private fun updateDateInView() {
         val myFormat = "dd/MM/yyyy" // mention the format you need
         val sdf = SimpleDateFormat(myFormat, Locale.GERMAN)
         editTextDate!!.text = sdf.format(cal.getTime())
     }
 
+    //Menu creation
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater = menuInflater
         inflater.inflate(R.menu.main_menu, menu)
         return true
     }
 
+    //What happens when a menu item is selected
+    //@RequiresApi(Build.VERSION_CODES.R)
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        val fh = FileExportImportHelper(this)
+
         when (item.itemId) {
             R.id.export_csv -> {
+                ///storage/emulated/0/
+                fh.ExportToFile()
                 Log.d("export_csv", "done")
                 return true
             }
