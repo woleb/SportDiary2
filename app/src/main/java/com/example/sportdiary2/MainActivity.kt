@@ -1,6 +1,7 @@
 package com.example.sportdiary2
 
 import android.app.DatePickerDialog
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
@@ -109,13 +110,13 @@ class MainActivity : AppCompatActivity() {
 
             // Checking if all fields are filled
             if (editTextDate.text.toString().isNotEmpty() &&
-                editTextSport.toString().isNotEmpty() &&
+                editTextSport.selectedItem.toString().isNotEmpty() &&
                 editTextFeeling.text.toString().isNotEmpty() &&
                 editTextNotes.text.toString().isNotEmpty()
             ) {
                 //putting all fields in a list
                 val entries = Entries(
-                    editTextDate.text.toString(), editTextSport.toString(),
+                    editTextDate.text.toString(), editTextSport.selectedItem.toString(),
                     editTextFeeling.text.toString(), editTextNotes.text.toString()
                 )
                 //insert the list into the database
@@ -130,11 +131,12 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(context, "Please Fill All Data", Toast.LENGTH_SHORT).show()
             }
         }
+
         //write out the database values to a scrollable text field
         val buttonRead: Button = this.findViewById(R.id.button_read)
-        val tvResult: TextView = findViewById(R.id.tvResult)
+        //val tvResult: TextView = findViewById(R.id.tvResult)
         buttonRead.setOnClickListener {
-            tvResult.text = ""
+        /*    tvResult.text = ""
             val dbHandler = DataBaseHandler(this)
             val cursor = dbHandler.readData()
             cursor!!.moveToFirst()
@@ -152,9 +154,16 @@ class MainActivity : AppCompatActivity() {
                 tvResult.append((cursor.getString(cursor.getColumnIndex(COL_NOTES))))
                 tvResult.append("\n\n")
             }
-            cursor.close()
+            cursor.close() */
+            this.launchIntent()
         }
     }
+
+    private fun launchIntent() {
+        val i = Intent(this, ScrollingActivity::class.java)
+        startActivity(i)
+    }
+
     //update the Date Field
     private fun updateDateInView() {
         val myFormat = "dd/MM/yyyy" // mention the format you need
@@ -191,6 +200,7 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+
 
 }
 

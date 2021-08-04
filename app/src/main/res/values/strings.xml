@@ -11,4 +11,7 @@
     <string name="read">Read</string>
     <string name="export_csv">Export CSV</string>
     <string name="import_csv">Import CSV</string>
+    <string name="title_activity_scrolling">Training Diary</string>
+    <string name="large_text"></string>
+    <string name="action_settings">Settings</string>
 </resources>
